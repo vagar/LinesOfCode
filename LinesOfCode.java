@@ -5,7 +5,7 @@ import java.io.IOException;
 public class LinesOfCode {
 
 	/**
-	 * @param args			the file to count loc in
+	 * @param args	the file to count loc in
 	 * @throws IOException	thrown if io fails somehow
 	 */
 	public static void main(String[] args) throws IOException {
@@ -15,8 +15,9 @@ public class LinesOfCode {
 		int count = 0;
 		boolean flag = false;
 
-		if(args.length != 1){
-			System.out.println("Please give the path to a file to count loc in.\nUsage: java LinesOfCode D:\\workspace\\project\\file.java");
+		if (args.length != 1) {
+			System.out
+					.println("Please give the path to a file to count loc in.\nUsage: java LinesOfCode <file>");
 			return;
 		}
 
@@ -24,7 +25,8 @@ public class LinesOfCode {
 			is = new BufferedReader(new FileReader(args[0]));
 			String l;
 
-			while ((l = is.readLine()) != null) { //single pass, don't explicitly count blank and comment lines
+			// single pass, don't explicitly count blank and comment lines
+			while ((l = is.readLine()) != null) {
 
 				if ((!l.trim().equals("")) && !flag)
 					count++;
