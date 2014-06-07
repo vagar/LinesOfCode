@@ -5,7 +5,7 @@ import java.io.IOException;
 public class LinesOfCode {
 
 	/**
-	 * @param args	the file to count loc in
+	 * @param args		the file to count loc in
 	 * @throws IOException	thrown if io fails somehow
 	 */
 	public static void main(String[] args) throws IOException {
@@ -17,7 +17,7 @@ public class LinesOfCode {
 
 		if (args.length != 1) {
 			System.out
-					.println("Please give the path to a file to count loc in.\nUsage: java LinesOfCode <file>");
+				.println("Please give the path to a file to count loc in.\nUsage: java LinesOfCode <file>");
 			return;
 		}
 
