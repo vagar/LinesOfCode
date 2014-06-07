@@ -24,7 +24,7 @@ public class LinesOfCode {
 			is = new BufferedReader(new FileReader(args[0]));
 			String l;
 
-			while ((l = is.readLine()) != null) {
+			while ((l = is.readLine()) != null) { //single pass, don't explicitly count blank and comment lines
 
 				if ((!l.trim().equals("")) && !flag)
 					count++;
