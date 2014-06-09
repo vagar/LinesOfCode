@@ -59,12 +59,12 @@ public class LoCCounter {
 	}	
 	
 	/**
-	 * @param args		the file to count loc in
+	 * @param args - the file to count loc in
 	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.out
-				.println("Please give the path to a file to count loc in.\nUsage: java LinesOfCode <file>");
+				.println("Please give the path to a file to count loc in.\nUsage: java LoCCounter <file>");
 			return;
 		}
 		
