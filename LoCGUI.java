@@ -17,6 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 
+/*
+ * A comment about some crazy shit
+ */
 
 public class LoCGUI extends JFrame {
 
