@@ -1,25 +1,23 @@
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
-import java.awt.Insets;
-import javax.swing.JList;
 import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.File;
-
-/*
- * A comment about some crazy shit
- */
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class LoCGUI extends JFrame {
 
@@ -27,6 +25,7 @@ public class LoCGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtFile;
 	private JButton btnBrowse;
+	private JScrollPane scrollPane;
 	private JList<String> list;
 	private DefaultListModel<String> listModel;
 	private JLabel lblFile;
@@ -56,15 +55,15 @@ public class LoCGUI extends JFrame {
 	public LoCGUI() {
 		setTitle("Lines of Code");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 330);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{20, 0, 100, 75, 50, 30, 80, 20, 0, 0};
+		gbl_contentPane.columnWidths = new int[]{20, 0, 100, 75, 50, 30, 40, 20, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{10, 0, 20, 0, 10, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		lblFile = new JLabel("File:");
@@ -86,6 +85,7 @@ public class LoCGUI extends JFrame {
 		
 		
 		fileChooser = new JFileChooser();
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		fileChooser.setMultiSelectionEnabled(false);
 		
 		
@@ -103,6 +103,8 @@ public class LoCGUI extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_btnBrowse = new GridBagConstraints();
+		gbc_btnBrowse.anchor = GridBagConstraints.WEST;
+		gbc_btnBrowse.gridwidth = 2;
 		gbc_btnBrowse.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBrowse.gridx = 6;
 		gbc_btnBrowse.gridy = 1;
@@ -114,16 +116,34 @@ public class LoCGUI extends JFrame {
 				
 				listModel.clear();
 				
-				LoCResult res = LoCCounter.count(txtFile.getText());
-				if(!res.error()){
-					listModel.addElement("File: "+new File(txtFile.getText()).getName());
-					listModel.addElement("   "+res.getCodeLines()+" Lines of Code");
-					listModel.addElement("   "+res.getCommentLines()+" Comment lines");
-					listModel.addElement("   "+res.getBlankLines()+" Blank lines");	
+				ArrayList<LoCResult> result = LoCCounter.count(Paths.get(txtFile.getText()));
+				
+				int totalCodeLines = 0, totalCommentLines = 0, totalBlankLines = 0;
+				
+				for (LoCResult res : result) {
+					if(!res.error()){
+						listModel.addElement("===============");
+						listModel.addElement("File: "+res.getPath().toAbsolutePath());
+						listModel.addElement("   "+res.getCodeLines()+" Lines of Code");
+						listModel.addElement("   "+res.getCommentLines()+" Comment lines");
+						listModel.addElement("   "+res.getBlankLines()+" Blank lines");
+						totalCodeLines += res.getCodeLines();
+						totalCommentLines += res.getCommentLines();
+						totalBlankLines += res.getBlankLines();
+						
+					}
+					else{
+						listModel.addElement("ERROR CODE 42");	
+					}
 				}
-				else{
-					listModel.addElement("ERROR CODE 42");	
-				}
+				
+				listModel.addElement("===============");
+				listModel.addElement("===============");
+				listModel.addElement("Total in "+Paths.get(txtFile.getText()).toAbsolutePath());
+				listModel.addElement("   "+totalCodeLines+" Lines of Code");
+				listModel.addElement("   "+totalCommentLines+" Comment lines");
+				listModel.addElement("   "+totalBlankLines+" Blank lines");	
+				
 			}
 		});
 		GridBagConstraints gbc_btnCountLoc = new GridBagConstraints();
@@ -143,17 +163,20 @@ public class LoCGUI extends JFrame {
 		contentPane.add(lblResults, gbc_lblResults);
 		
 		listModel = new DefaultListModel<String>();	
-		
 		list = new JList<String>(listModel);
-		list.setPreferredSize(new Dimension(200, 100));
-		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridheight = 3;
-		gbc_list.gridwidth = 5;
-		gbc_list.insets = new Insets(0, 0, 0, 5);
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 2;
-		gbc_list.gridy = 6;
-		contentPane.add(list, gbc_list);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setPreferredSize(new Dimension(200, 100));
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 3;
+		gbc_scrollPane.gridwidth = 6;
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.gridy = 6;
+		contentPane.add(scrollPane, gbc_scrollPane);
+		
+		scrollPane.setViewportView(list);
 	}
 
 }
