@@ -1,7 +1,7 @@
 import java.nio.file.Path;
 
 public class LoCResult {
-	
+
 	private final Path path;
 	private final int totalLines, commentLines, blankLines;
 	private boolean err = false;
@@ -33,8 +33,8 @@ public class LoCResult {
 	public int getCodeLines() {
 		return totalLines - commentLines - blankLines;
 	}
-	
-	public Path getPath(){
+
+	public Path getPath() {
 		return path;
 	}
 
@@ -43,7 +43,8 @@ public class LoCResult {
 	}
 
 	public String report() {
-		return err?"Error flag set, no count was done.":path+": " + getCodeLines() + "lines of code (" + getCommentLines()
+		return err ? "Error flag set, no count was done." : path + ": "
+				+ getCodeLines() + "lines of code (" + getCommentLines()
 				+ " comment, " + getBlankLines() + " blank)";
 	}
 
