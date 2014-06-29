@@ -129,6 +129,7 @@ public class LoCGUI extends JFrame {
 						listModel.addElement("===============");
 						listModel.addElement("File: "
 								+ res.getPath().toAbsolutePath());
+						listModel.addElement("   (" + res.getLanguage() + ")");
 						listModel.addElement("   " + res.getCodeLines()
 								+ " Lines of Code");
 						listModel.addElement("   " + res.getCommentLines()

@@ -26,9 +26,8 @@ public class PrintFiles extends SimpleFileVisitor<Path> {
 		DirectoryStream.Filter<Path> filter = new CodeFileFilter(
 				knownExtensions);
 
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir,
-				filter)) {
-			for (Path path : stream) {
+		try (DirectoryStream<Path> ds = Files.newDirectoryStream(dir, filter)) {
+			for (Path path : ds) {
 				files.add(path.toAbsolutePath());
 			}
 		} catch (IOException e) {

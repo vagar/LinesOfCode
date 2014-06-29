@@ -9,19 +9,27 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
 public class LoCCounter {
 
 	public static final JsonObject KNOWN_FILE_EXTENSIONS;
+	public static final JsonObject COMMENT_LITERALS;
 
 	static {
 		try {
 			JsonReader reader = Json.createReader(new FileInputStream(
 					"knownExtensions.json"));
-
 			KNOWN_FILE_EXTENSIONS = reader.readObject();
+			reader.close();
+
+			JsonReader reader2 = Json.createReader(new FileInputStream(
+					"commentLiterals.json"));
+			COMMENT_LITERALS = reader2.readObject();
+			reader2.close();
 
 		} catch (FileNotFoundException e) {
 			// e.printStackTrace();
@@ -41,51 +49,88 @@ public class LoCCounter {
 	 */
 	public static LoCResult countFile(Path path) {
 
-		BufferedReader is = null;
 		int totalcount = 0, commcount = 0, blankcount = 0;
 		boolean flag = false;
 
-		try {
-			try {
-				is = Files.newBufferedReader(path, Charset.defaultCharset());
-				String l;
+		String ext = "";
+		ArrayList<String> singleline = new ArrayList<String>(), blockstart = new ArrayList<String>(), blockend = new ArrayList<String>();
 
-				while ((l = is.readLine()) != null) {
+		// TODO: finish new json sile, read it and get comment literals from
+		// there
 
-					totalcount++;
+		for (String s : KNOWN_FILE_EXTENSIONS.keySet())
+			if (path.getFileName().toString().endsWith("." + s)
+					|| (s.length() > 5 && path.getFileName().toString()
+							.endsWith(s)))
+				ext = s;
 
-					if ((l.trim().equals("")) && !flag)
-						blankcount++;
+		JsonObject lang = COMMENT_LITERALS.getJsonObject(KNOWN_FILE_EXTENSIONS
+				.getString(ext));
+		JsonArray literals = lang.getJsonArray("literals");
 
-					if (flag)
-						commcount++;
+		for (JsonValue jv : literals) {
+			switch (CommentType.valueOf(((JsonObject) jv).getString("type"))) {
+			case SINGLE_LINE:
+				singleline.add(((JsonObject) jv).getString("value"));
+				break;
+			case START_BLOCK:
+				blockstart.add(((JsonObject) jv).getString("value"));
+				break;
+			case END_BLOCK:
+				blockend.add(((JsonObject) jv).getString("value"));
+				break;
+			}
+		}
 
-					if (l.indexOf("//") != -1 && !flag)
-						if (l.trim().split("//").length == 0
-								|| l.trim().split("//")[0].equals(""))
-							commcount++;
+		try (BufferedReader is = Files.newBufferedReader(path,
+				Charset.defaultCharset())) {
 
-					if (l.indexOf("/*") != -1 && !flag) {
-						flag = true;
-						if (l.trim().split("/*").length == 1
-								|| l.trim().split("/*")[0].equals(""))
-							commcount++;
+			String l;
+
+			while ((l = is.readLine()) != null) {
+
+				totalcount++;
+
+				if ((l.trim().equals("")) && !flag)
+					blankcount++;
+
+				if (flag)
+					commcount++;
+
+				if (singleline.size() > 0)
+					for (String s : singleline) {
+						if (l.indexOf(s) != -1 && !flag)
+							if (l.trim().split(s).length == 0
+									|| l.trim().split(s)[0].equals("")) {
+								commcount++;
+								break;
+							}
 					}
 
-					if (l.indexOf("*/") != -1 && flag)
-						flag = false;
-				}
+				if (blockstart.size() > 0)
+					for (String s : blockstart) {
+						if (l.indexOf(s) != -1 && !flag) {
+							flag = true;
+							if (l.trim().split(s).length == 1
+									|| l.trim().split(s)[0].equals(""))
+								commcount++;
+						}
 
-				return new LoCResult(path, totalcount, commcount, blankcount);
+					}
 
-			} finally {
-				if (is != null)
-					is.close();
+				if (blockend.size() > 0)
+					for (String s : blockend) {
+						if (l.indexOf(s) != -1 && flag)
+							flag = false;
+					}
+
 			}
+
+			return new LoCResult(path, lang.getString("name"), totalcount,
+					commcount, blankcount);
 
 		} catch (IOException e) {
 			// e.printStackTrace();
-			// System.out.println(path);
 		}
 
 		return new LoCResult(true);
