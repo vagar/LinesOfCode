@@ -1,0 +1,756 @@
+{  
+   "ABAP": {
+		 "name" : "ABAP",
+		 "literals" : [
+			{"value" : "*", "type" : "SINGLE_LINE"},
+			{"value" : "\"", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"ActionScript": {
+		 "name" : "ActionScript",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Ada": {
+		 "name" : "Ada",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Arduino Sketch": {
+		 "name" : "Arduino Sketch",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"ASP": {
+		 "name" : "ASP",
+		 "literals" : [
+			{"value" : "'", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"ASP.Net": {
+		 "name" : "ASP.Net",
+		 "literals" : [
+			{"value" : "'", "type" : "SINGLE_LINE"},
+			{"value" : "<%--", "type" : "START_BLOCK"},
+			{"value" : "--%>", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Assembly": {
+		 "name" : "Assembly",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"AutoHotkey": {
+		 "name" : "AutoHotkey",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"AWK": {
+		 "name" : "AWK",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Bourne Again Shell": {
+		 "name" : "Bourne Again Shell",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Bourne Shell": {
+		 "name" : "Bourne Shell",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"C": {
+		 "name" : "C",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"C Shell": {
+		 "name" : "C Shell",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"C#": {
+		 "name" : "C#",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"C++": {
+		 "name" : "C++",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"C/C++ Header": {
+		 "name" : "C/C++ Header",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"CCS": {
+		 "name" : "CCS",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Clojure": {
+		 "name" : "Clojure",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"},
+			{"value" : "(comment", "type" : "START_BLOCK"},
+			{"value" : ")", "type" : "END_BLOCK"}
+		 ]
+	},
+	"ClojureScript": {
+		 "name" : "ClojureScript",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"CMake": {
+		 "name" : "CMake",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"COBOL": {
+		 "name" : "COBOL",
+		 "literals" : [
+			{"value" : "*>", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"CoffeeScript": {
+		 "name" : "CoffeeScript",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "###", "type" : "START_BLOCK"},
+			{"value" : "###", "type" : "END_BLOCK"}
+		 ]
+	},
+	"ColdFusion": {
+		 "name" : "ColdFusion",
+		 "literals" : [
+			{"value" : "<!---", "type" : "START_BLOCK"},
+			{"value" : "--->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"ColdFusion CFScript": {
+		 "name" : "ColdFusion CFScript",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"CSS": {
+		 "name" : "CSS",
+		 "literals" : [
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Cython": {
+		 "name" : "Cython",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"D": {
+		 "name" : "D",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"DAL": {
+		 "name" : "DAL",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Dart": {
+		 "name" : "Dart",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"DOS Batch": {
+		 "name" : "DOS Batch",
+		 "literals" : [
+			{"value" : "REM", "type" : "SINGLE_LINE"},
+			{"value" : "::", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"DTD": {
+		 "name" : "DTD",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Erlang": {
+		 "name" : "Erlang",
+		 "literals" : [
+			{"value" : "%", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Expect": {
+		 "name" : "Expect",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Fortran 77": {
+		 "name" : "Fortran 77",
+		 "literals" : [
+			{"value" : "C", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Fortran 90": {
+		 "name" : "Fortran 90",
+		 "literals" : [
+			{"value" : "!", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Fortran 95": {
+		 "name" : "Fortran 95",
+		 "literals" : [
+			{"value" : "C", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Go": {
+		 "name" : "Go",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Groovy": {
+		 "name" : "Groovy",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Haskell": {
+		 "name" : "Haskell",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "{-", "type" : "START_BLOCK"},
+			{"value" : "-}", "type" : "END_BLOCK"}
+		 ]
+	},
+	"HTML": {
+		 "name" : "HTML",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"IDL": {
+		 "name" : "IDL",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"InstallShield": {
+		 "name" : "InstallShield",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Java": {
+		 "name" : "Java",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Javascript": {
+		 "name" : "Javascript",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"JavaServer Faces": {
+		 "name" : "JavaServer Faces",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"JCL": {
+		 "name" : "JCL",
+		 "literals" : [
+			{"value" : "//*", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"JSP": {
+		 "name" : "JSP",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"},
+			{"value" : "<%--", "type" : "START_BLOCK"},
+			{"value" : "--%>", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Korn Shell": {
+		 "name" : "Korn Shell",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"LESS": {
+		 "name" : "LESS",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"lex": {
+		 "name" : "lex",
+		 "literals" : [
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Lisp": {
+		 "name" : "Lisp",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"},
+			{"value" : "#|", "type" : "START_BLOCK"},
+			{"value" : "|#", "type" : "END_BLOCK"}
+		 ]
+	},
+	"OpenCL": {
+		 "name" : "OpenCL",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"LiveLink OScript": {
+		 "name" : "LiveLink OScript",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Lua": {
+		 "name" : "Lua",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "--[[", "type" : "START_BLOCK"},
+			{"value" : "]]", "type" : "END_BLOCK"}
+		 ]
+	},
+	"m4": {
+		 "name" : "m4",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"make": {
+		 "name" : "make",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"MATLAB": {
+		 "name" : "MATLAB",
+		 "literals" : [
+			{"value" : "%", "type" : "SINGLE_LINE"},
+			{"value" : "%{", "type" : "START_BLOCK"},
+			{"value" : "%}", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Maven": {
+		 "name" : "Maven",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Modula3": {
+		 "name" : "Modula3",
+		 "literals" : [
+			{"value" : "(*", "type" : "START_BLOCK"},
+			{"value" : "*)", "type" : "END_BLOCK"}
+		 ]
+	},
+	"MSBuild scripts": {
+		 "name" : "MSBuild scripts",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"MUMPS": {
+		 "name" : "MUMPS",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"MXML": {
+		 "name" : "MXML",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"},
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"NAnt scripts": {
+		 "name" : "NAnt scripts",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"},
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Objective C": {
+		 "name" : "Objective C",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Objective C++": {
+		 "name" : "Objective C++",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"OCaml": {
+		 "name" : "OCaml",
+		 "literals" : [
+			{"value" : "(*", "type" : "START_BLOCK"},
+			{"value" : "*)", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Oracle Forms": {
+		 "name" : "Oracle Forms",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Oracle Reports": {
+		 "name" : "Oracle Reports",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Pascal": {
+		 "name" : "Pascal",
+		 "literals" : [
+			{"value" : "{", "type" : "START_BLOCK"},
+			{"value" : "}", "type" : "END_BLOCK"},
+			{"value" : "(*", "type" : "START_BLOCK"},
+			{"value" : "*)", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Patran Command Language": {
+		 "name" : "Patran Command Language",
+		 "literals" : [
+			{"value" : "$", "type" : "SINGLE_LINE"},
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Perl": {
+		 "name" : "Perl",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "=begin", "type" : "START_BLOCK"},
+			{"value" : "=cut", "type" : "END_BLOCK"}
+		 ]
+	},
+	"PHP": {
+		 "name" : "PHP",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"PowerShell": {
+		 "name" : "PowerShell",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "<#", "type" : "START_BLOCK"},
+			{"value" : "#>", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Python": {
+		 "name" : "Python",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "'''", "type" : "START_BLOCK"},
+			{"value" : "'''", "type" : "END_BLOCK"},
+			{"value" : "\"\"\"", "type" : "START_BLOCK"},
+			{"value" : "\"\"\"", "type" : "END_BLOCK"}
+		 ]
+	},
+	"QML": {
+		 "name" : "QML",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Razor": {
+		 "name" : "Razor",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"},
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Rexx": {
+		 "name" : "Rexx",
+		 "literals" : [
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Ruby": {
+		 "name" : "Ruby",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "=begin", "type" : "START_BLOCK"},
+			{"value" : "=cut", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Ruby HTML": {
+		 "name" : "Ruby HTML",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"},
+			{"value" : "=begin", "type" : "START_BLOCK"},
+			{"value" : "=cut", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Rust": {
+		 "name" : "Rust",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"SASS": {
+		 "name" : "SASS",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Scala": {
+		 "name" : "Scala",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"sed": {
+		 "name" : "sed",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"SKILL": {
+		 "name" : "SKILL",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"SKILL++": {
+		 "name" : "SKILL++",
+		 "literals" : [
+			{"value" : ";", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Smarty": {
+		 "name" : "Smarty",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"},
+			{"value" : "{*", "type" : "START_BLOCK"},
+			{"value" : "*}", "type" : "END_BLOCK"}
+		 ]
+	},
+	"SQL": {
+		 "name" : "SQL",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"SQL Stored Procedure": {
+		 "name" : "SQL Stored Procedure",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Tcl/Tk": {
+		 "name" : "Tcl/Tk",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Vala": {
+		 "name" : "Vala",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Vala Header": {
+		 "name" : "Vala Header",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"Verilog-SystemVerilog": {
+		 "name" : "Verilog-SystemVerilog",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"VHDL": {
+		 "name" : "VHDL",
+		 "literals" : [
+			{"value" : "--", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"vim script": {
+		 "name" : "vim script",
+		 "literals" : [
+			{"value" : "\"", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"Visual Basic": {
+		 "name" : "Visual Basic",
+		 "literals" : [
+			{"value" : "'", "type" : "SINGLE_LINE"}
+		 ]
+	},
+	"XAML": {
+		 "name" : "XAML",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"XML": {
+		 "name" : "XML",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"XSD": {
+		 "name" : "XSD",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"XSLT": {
+		 "name" : "XSLT",
+		 "literals" : [
+			{"value" : "<!--", "type" : "START_BLOCK"},
+			{"value" : "-->", "type" : "END_BLOCK"}
+		 ]
+	},
+	"yacc": {
+		 "name" : "zzz",
+		 "literals" : [
+			{"value" : "//", "type" : "SINGLE_LINE"},
+			{"value" : "/*", "type" : "START_BLOCK"},
+			{"value" : "*/", "type" : "END_BLOCK"}
+		 ]
+	},
+	"YAML": {
+		 "name" : "zzz",
+		 "literals" : [
+			{"value" : "#", "type" : "SINGLE_LINE"}
+		 ]
+	}
+}
