@@ -5,9 +5,15 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -18,6 +24,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
 
 public class LoCGUI extends JFrame {
 
@@ -32,6 +41,10 @@ public class LoCGUI extends JFrame {
 	private JLabel lblResults;
 	private JButton btnCountLoc;
 	private JFileChooser fileChooser;
+	private JMenuBar menuBar;
+	private JMenu mnFile;
+	private JMenuItem mntmSaveResults;
+	private JsonObject saveableResults;
 
 	/**
 	 * Launch the application.
@@ -56,6 +69,27 @@ public class LoCGUI extends JFrame {
 		setTitle("Lines of Code");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 330);
+		
+		menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		mntmSaveResults = new JMenuItem("Save Results");
+		mntmSaveResults.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try (JsonWriter jsonWriter = Json.createWriter(new FileOutputStream(
+						"results"+(System.currentTimeMillis() / 1000L)+".json"))) {
+					jsonWriter.writeObject(saveableResults);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		mnFile.add(mntmSaveResults);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -123,6 +157,8 @@ public class LoCGUI extends JFrame {
 						.get(txtFile.getText()));
 
 				int totalCodeLines = 0, totalCommentLines = 0, totalBlankLines = 0;
+				
+				JsonObjectBuilder jb = Json.createObjectBuilder();
 
 				for (LoCResult res : result) {
 					if (!res.error()) {
@@ -139,11 +175,14 @@ public class LoCGUI extends JFrame {
 						totalCodeLines += res.getCodeLines();
 						totalCommentLines += res.getCommentLines();
 						totalBlankLines += res.getBlankLines();
-
+						
+						jb.add(res.getPath().toAbsolutePath().toString(), res.toJsonObject());;
 					} else {
 						listModel.addElement("ERROR CODE 42");
 					}
 				}
+				
+				saveableResults = jb.build();
 
 				listModel.addElement("===============");
 				listModel.addElement("===============");

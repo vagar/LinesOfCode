@@ -1,5 +1,8 @@
 import java.nio.file.Path;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 public class LoCResult {
 
 	private final Path path;
@@ -47,6 +50,15 @@ public class LoCResult {
 
 	public boolean error() {
 		return err;
+	}
+	
+	public JsonObject toJsonObject(){
+		return Json.createObjectBuilder()
+		.add("path",path.toAbsolutePath().toString())
+		.add("lang",lang)
+		.add("totalLines",totalLines)
+		.add("commentLines",commentLines)
+		.add("blankLines", blankLines).build();
 	}
 
 	public String report() {

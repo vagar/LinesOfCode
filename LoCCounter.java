@@ -55,9 +55,6 @@ public class LoCCounter {
 		String ext = "";
 		ArrayList<String> singleline = new ArrayList<String>(), blockstart = new ArrayList<String>(), blockend = new ArrayList<String>();
 
-		// TODO: finish new json sile, read it and get comment literals from
-		// there
-
 		for (String s : KNOWN_FILE_EXTENSIONS.keySet())
 			if (path.getFileName().toString().endsWith("." + s)
 					|| (s.length() > 5 && path.getFileName().toString()
@@ -142,8 +139,8 @@ public class LoCCounter {
 	 * a <b>path</b> to a file is given, <code>countFile(Path)</code> will be
 	 * called directly.
 	 * 
-	 * @param path
-	 *            - path to the directory/file
+	 * @param path - path to the directory/file
+	 * 
 	 * @return An <code>ArrayList&lt;LoCResult&gt;</code> with the results of
 	 *         all the evaluated files in no particular order.
 	 */
@@ -173,8 +170,7 @@ public class LoCCounter {
 	}
 
 	/**
-	 * @param args
-	 *            - the file to count loc in
+	 * @param args - the file to count loc in
 	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
