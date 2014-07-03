@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.file.Paths;
@@ -20,10 +21,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -40,11 +44,11 @@ public class LoCGUI extends JFrame {
 	private JLabel lblFile;
 	private JLabel lblResults;
 	private JButton btnCountLoc;
-	private JFileChooser fileChooser;
+	private JFileChooser openFileChooser, saveFileChooser;
 	private JMenuBar menuBar;
 	private JMenu mnFile;
 	private JMenuItem mntmSaveResults;
-	private JsonObject saveableResults;
+	private JsonObject saveableResults = null;
 
 	/**
 	 * Launch the application.
@@ -53,6 +57,7 @@ public class LoCGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					LoCGUI frame = new LoCGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -69,24 +74,76 @@ public class LoCGUI extends JFrame {
 		setTitle("Lines of Code");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 330);
-		
+
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		mnFile = new JMenu("File");
 		menuBar.add(mnFile);
-		
+
+		saveFileChooser = new JFileChooser() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void approveSelection() {
+				File f = getSelectedFile();
+				if (f.exists() && getDialogType() == SAVE_DIALOG) {
+					int result = JOptionPane.showConfirmDialog(this,
+							"The file exists, overwrite?", "Existing file",
+							JOptionPane.YES_NO_CANCEL_OPTION);
+					switch (result) {
+					case JOptionPane.YES_OPTION:
+						super.approveSelection();
+						return;
+					case JOptionPane.NO_OPTION:
+						return;
+					case JOptionPane.CLOSED_OPTION:
+						return;
+					case JOptionPane.CANCEL_OPTION:
+						cancelSelection();
+						return;
+					}
+				}
+				super.approveSelection();
+			}
+		};
+		saveFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		saveFileChooser.setMultiSelectionEnabled(false);
+		saveFileChooser.setFileFilter(new FileFilter() {
+
+			@Override
+			public String getDescription() {
+				return "JSON Files (*.json)";
+			}
+
+			@Override
+			public boolean accept(File f) {
+				return f.getName().endsWith(".json") || f.isDirectory();
+			}
+		});
+
 		mntmSaveResults = new JMenuItem("Save Results");
+		mntmSaveResults.setIcon(UIManager.getIcon("FileView.floppyDriveIcon"));
+		mntmSaveResults.setEnabled(false);
 		mntmSaveResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try (JsonWriter jsonWriter = Json.createWriter(new FileOutputStream(
-						"results"+(System.currentTimeMillis() / 1000L)+".json"))) {
+
+				int returnVal = saveFileChooser.showSaveDialog(LoCGUI.this);
+				if (returnVal != JFileChooser.APPROVE_OPTION)
+					return;
+
+				try (JsonWriter jsonWriter = Json
+						.createWriter(new FileOutputStream(saveFileChooser
+								.getSelectedFile()
+								+ (saveFileChooser.getSelectedFile().toString()
+										.endsWith(".json") ? "" : ".json")))) {
 					jsonWriter.writeObject(saveableResults);
 				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
+					System.err.println("Saving results to json file failed.");
+					//e1.printStackTrace();
 				}
-				
+
 			}
 		});
 		mnFile.add(mntmSaveResults);
@@ -121,18 +178,19 @@ public class LoCGUI extends JFrame {
 		contentPane.add(txtFile, gbc_txtTest);
 		txtFile.setColumns(10);
 
-		fileChooser = new JFileChooser();
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		fileChooser.setMultiSelectionEnabled(false);
+		openFileChooser = new JFileChooser();
+		openFileChooser
+				.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		openFileChooser.setMultiSelectionEnabled(false);
 
 		btnBrowse = new JButton("Browse...");
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int returnVal = fileChooser.showOpenDialog(LoCGUI.this);
+				int returnVal = openFileChooser.showOpenDialog(LoCGUI.this);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					listModel.clear();
-					txtFile.setText(fileChooser.getSelectedFile()
+					txtFile.setText(openFileChooser.getSelectedFile()
 							.getAbsolutePath());
 				} else {
 					// no need to handle
@@ -157,7 +215,7 @@ public class LoCGUI extends JFrame {
 						.get(txtFile.getText()));
 
 				int totalCodeLines = 0, totalCommentLines = 0, totalBlankLines = 0;
-				
+
 				JsonObjectBuilder jb = Json.createObjectBuilder();
 
 				for (LoCResult res : result) {
@@ -175,13 +233,15 @@ public class LoCGUI extends JFrame {
 						totalCodeLines += res.getCodeLines();
 						totalCommentLines += res.getCommentLines();
 						totalBlankLines += res.getBlankLines();
-						
-						jb.add(res.getPath().toAbsolutePath().toString(), res.toJsonObject());;
+
+						jb.add(res.getPath().toAbsolutePath().toString(),
+								res.toJsonObject());
+						;
 					} else {
 						listModel.addElement("ERROR CODE 42");
 					}
 				}
-				
+
 				saveableResults = jb.build();
 
 				listModel.addElement("===============");
@@ -193,6 +253,7 @@ public class LoCGUI extends JFrame {
 						+ " Comment lines");
 				listModel.addElement("   " + totalBlankLines + " Blank lines");
 
+				mntmSaveResults.setEnabled(true);
 			}
 		});
 		GridBagConstraints gbc_btnCountLoc = new GridBagConstraints();
