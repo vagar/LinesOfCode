@@ -1,4 +1,5 @@
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -13,6 +14,12 @@ public class LoCResult {
 	public LoCResult(boolean err) {
 		this(null, "", 0, 0, 0);
 		this.err = err;
+	}
+
+	public LoCResult(JsonObject obj) {
+		this(Paths.get(obj.getString("path")), obj.getString("lang"), obj
+				.getInt("totalLines"), obj.getInt("commentLines"), obj
+				.getInt("blankLines"));
 	}
 
 	public LoCResult(Path path, String lang, int totalLines, int commentLines,
@@ -51,14 +58,13 @@ public class LoCResult {
 	public boolean error() {
 		return err;
 	}
-	
-	public JsonObject toJsonObject(){
+
+	public JsonObject toJsonObject() {
 		return Json.createObjectBuilder()
-		.add("path",path.toAbsolutePath().toString())
-		.add("lang",lang)
-		.add("totalLines",totalLines)
-		.add("commentLines",commentLines)
-		.add("blankLines", blankLines).build();
+				.add("path", path.toAbsolutePath().toString())
+				.add("lang", lang).add("totalLines", totalLines)
+				.add("commentLines", commentLines)
+				.add("blankLines", blankLines).build();
 	}
 
 	public String report() {

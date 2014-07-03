@@ -57,7 +57,8 @@ public class LoCGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager
+							.getSystemLookAndFeelClassName());
 					LoCGUI frame = new LoCGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -141,7 +142,7 @@ public class LoCGUI extends JFrame {
 					jsonWriter.writeObject(saveableResults);
 				} catch (FileNotFoundException e1) {
 					System.err.println("Saving results to json file failed.");
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 
 			}
